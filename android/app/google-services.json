@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "479894270000",
+    "firebase_url": "https://auth-mab-form.firebaseio.com",
+    "project_id": "auth-mab-form",
+    "storage_bucket": "auth-mab-form.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479894270000:android:85b4fe9a6bbfeb3a9d7df5",
+        "android_client_info": {
+          "package_name": "com.mab.authmabform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479894270000-i6qprh2ki1dltib2h7o4922c80cpbkji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mab.authmabform",
+            "certificate_hash": "e914e156efbef517332cc11a86180bb39c277342"
+          }
+        },
+        {
+          "client_id": "479894270000-gk8rd52ce4t1q1omc9j395ftl3juev9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwG6BGnc4pRQC-wvdbN-JpjMDGh0Qwg18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479894270000-gk8rd52ce4t1q1omc9j395ftl3juev9b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
