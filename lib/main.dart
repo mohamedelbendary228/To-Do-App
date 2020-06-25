@@ -32,4 +32,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// const kPrimaryLightColor = Color(0xFFF1E6FF);

@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Singed In Successfully',
+              'Signed in Successfully',
               style: TextStyle(fontSize: 30, color: Colors.grey),
             ),
             SizedBox(
