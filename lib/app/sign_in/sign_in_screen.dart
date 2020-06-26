@@ -158,9 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 _isLoading
-                    ? CircularProgressIndicator(
-                  backgroundColor: Theme.of(context).indicatorColor,
-                )
+                    ? CircularProgressIndicator()
                     : Text(
                         textFormType,
                         style: TextStyle(

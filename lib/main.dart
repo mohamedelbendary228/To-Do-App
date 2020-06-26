@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Auth Form',
         theme: ThemeData(
-          indicatorColor: Color(0xFF6F35A5),
           primaryColor: Color(0xFF6F35A5),
+          accentColor: Color(0xFF6F35A5),
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
