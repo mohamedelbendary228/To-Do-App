@@ -1,10 +1,10 @@
-import 'package:authmabform/app/landing_page.dart';
-import 'package:authmabform/app/welcome_screen/welcome_screen.dart';
-import 'package:authmabform/services/auth.dart';
+import 'file:///C:/Users/moham/AndroidStudioProjects/auth_mab_form/lib/landing_page.dart';
+import 'package:authmabform/auth_services/auth.dart';
+import 'package:authmabform/them_service/app_them.dart';
+import 'package:authmabform/them_service/app_theme_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './services/auth.dart';
 void main() {
   runApp(MyApp());
 }
@@ -17,16 +17,21 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
             value: Auth(),
         ),
-      ],
-      child: MaterialApp(
-        title: 'Auth Form',
-        theme: ThemeData(
-          primaryColor: Color(0xFF6F35A5),
-          accentColor: Color(0xFF6F35A5),
-          scaffoldBackgroundColor: Colors.white,
+        ChangeNotifierProvider.value(
+          value: AppThemeState(),
         ),
-        debugShowCheckedModeBanner: false,
-        home: LandingPage(),
+      ],
+      child: Consumer<AppThemeState>(
+        builder: (_, appState, __) {
+          return MaterialApp(
+            title: 'ToDo App',
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: appState.isDark? ThemeMode.dark : ThemeMode.light,
+            debugShowCheckedModeBanner: false,
+            home: LandingPage(),
+          );
+        },
       ),
     );
   }

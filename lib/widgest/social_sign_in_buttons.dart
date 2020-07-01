@@ -18,7 +18,7 @@ class SocialSignInIcons extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 1,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).accentColor,
           ),
           shape: BoxShape.circle,
         ),

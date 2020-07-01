@@ -12,23 +12,6 @@ class User {
   final String uid;
 }
 
-//abstract class AuthBase{
-//  Stream<User> get onAuthStateChanged;
-//
-//  Future<User> currentUser();
-//
-//  Future<User> signInAnonymously();
-//
-////  Future<User> signInWithEmailAndPassword(String email, String password);
-////
-////  Future<User> createUserWithEmailAndPassword(String email, String password);
-//
-//  Future<User> signInWithGoogle();
-//
-//  // Future<User> signInWithFacebook();
-//  Future<void> signOut();
-//}
-
 
 class Auth with ChangeNotifier{
 
@@ -43,24 +26,23 @@ class Auth with ChangeNotifier{
   }
 
 
-  //@override
   Stream<User> get onAuthStateChanged {
     return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
   }
 
-  //@override
+
   Future<User> currentUser() async {
     final user = await _firebaseAuth.currentUser();
     return _userFromFirebase(user);
   }
 
-  //@override
+
   Future<User> signInAnonymously() async {
     final authResult = await _firebaseAuth.signInAnonymously();
     return _userFromFirebase(authResult.user);
   }
 
-  //@override
+
   Future<User> signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final googleAccount = await googleSignIn.signIn();
@@ -102,10 +84,29 @@ class Auth with ChangeNotifier{
     return _userFromFirebase(authResult.user);
   }
 
+//  Future<User> signInWithFacebook() async {
+//    final facebookLogin = FacebookLogin();
+//    final result = await facebookLogin.logInWithReadPermissions(
+//      ['public_profile'],
+//    );
+//    if (result.accessToken != null) {
+//      final authResult = await _firebaseAuth.signInWithCredential(
+//        FacebookAuthProvider.getCredential(
+//          accessToken: result.accessToken.token,
+//        ),
+//      );
+//      return _userFromFirebase(authResult.user);
+//    } else {
+//      throw PlatformException(
+//        code: 'ERROR_ABORTED_BY_USER',
+//        message: 'Sign in aborted by user',
+//      );
+//    }
+//  }
 
 
 
-  //@override
+
   Future<void> signOut() async {
     final googleSignIn = GoogleSignIn();
     await googleSignIn.signOut();

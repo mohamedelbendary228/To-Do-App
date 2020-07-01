@@ -1,7 +1,8 @@
-import 'package:authmabform/app/home_page.dart';
-import 'package:authmabform/app/sign_in/sign_in_screen.dart';
-import 'package:authmabform/app/welcome_screen/welcome_screen.dart';
-import 'package:authmabform/services/auth.dart';
+import 'package:authmabform/auth_services/auth.dart';
+import 'package:authmabform/crud_services/database.dart';
+import 'package:authmabform/home/home_page.dart';
+import 'package:authmabform/sign_in/sign_in_screen.dart';
+import 'package:authmabform/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,9 +19,12 @@ class LandingPage extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.active) {
           User user = snapshot.data;
           if (user == null) {
-            return WelcomeScreen();
+            return SignInScreen();
           }
-          return HomePage();
+          return Provider<Database>(
+            create: (_) => Database(uid: user.uid),
+            child: BottomNavigation(),
+          );
         } else {
           return Scaffold(
             body: Center(
