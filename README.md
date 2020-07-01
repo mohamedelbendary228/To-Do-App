@@ -1,6 +1,6 @@
 # authmabform
 
-A new Auth Form for sign in and sign up 
+A new To Do app
 
 ## Getting Started
 
