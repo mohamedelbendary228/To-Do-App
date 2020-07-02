@@ -6,9 +6,15 @@ class AppThemeState with ChangeNotifier{
 
 
   final String key = 'theme';
-  SharedPreferences _prefs;
+
 
   bool _isDarkMoodOn;
+
+   void toggleTheme(){
+    _isDarkMoodOn = !_isDarkMoodOn;
+    _saveToPrefs();
+    notifyListeners();
+  }
 
   bool get isDark => _isDarkMoodOn;
   AppThemeState(){
@@ -16,11 +22,7 @@ class AppThemeState with ChangeNotifier{
     _loadFromPrefs();
   }
 
-   void toggleTheme(){
-    _isDarkMoodOn = !_isDarkMoodOn;
-    _saveToPrefs();
-    notifyListeners();
-  }
+  SharedPreferences _prefs;
 
   Future<void> _initPrefs() async{
     if(_prefs == null){

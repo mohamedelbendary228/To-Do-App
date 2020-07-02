@@ -2,6 +2,7 @@ import 'package:authmabform/crud_services/database.dart';
 import 'package:authmabform/crud_services/edit_job_screen.dart';
 import 'package:authmabform/crud_services/job_model.dart';
 import 'package:authmabform/home/empty_content.dart';
+import 'package:authmabform/them_service/app_theme_state.dart';
 import 'package:authmabform/widgest/platform_excption_alert_dailog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,6 +26,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('To Do'),
+        actions: <Widget>[
+            Row(
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () => EditJobPage.show(context),
+                ),
+                SizedBox(width: 10),
+                Consumer<AppThemeState>(
+                  builder: (context, themeState, child) => Switch(
+                    onChanged: (newValue) {
+                      themeState.toggleTheme();
+                    },
+                    value: themeState.isDark,
+                  ),
+                )
+              ],
+            ),
+        ],
+      ),
       body: _buildBody(context),
     );
   }

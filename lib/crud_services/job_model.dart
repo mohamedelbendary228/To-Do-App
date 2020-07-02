@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+
 class Job{
   Job({@required this.id, @required this.name, @required this.salary});
   final String id;

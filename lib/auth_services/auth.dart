@@ -2,26 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:provider/provider.dart';
 
 class User {
+  final String uid;
+  final String photoUrl;
+  final String displayName;
+
   User({
     @required this.uid,
+    @required this.photoUrl,
+    @required this.displayName,
   });
-
-  final String uid;
 }
 
 
 class Auth with ChangeNotifier{
 
   final _firebaseAuth = FirebaseAuth.instance;
+
   User _userFromFirebase(FirebaseUser user) {
     if (user == null) {
       return null;
     }
     return User(
       uid: user.uid,
+      photoUrl: user.photoUrl,
+      displayName: user.displayName,
     );
   }
 
@@ -36,9 +42,16 @@ class Auth with ChangeNotifier{
     return _userFromFirebase(user);
   }
 
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+    final authResult = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return _userFromFirebase(authResult.user);
+  }
 
-  Future<User> signInAnonymously() async {
-    final authResult = await _firebaseAuth.signInAnonymously();
+  Future<User> createUserWithEmailAndPassword(
+      String email, String password) async {
+    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
     return _userFromFirebase(authResult.user);
   }
 
@@ -68,20 +81,6 @@ class Auth with ChangeNotifier{
         message: 'Sign in aborted by user',
       );
     }
-  }
-
-
-  Future<User> signInWithEmailAndPassword(String email, String password) async {
-    final authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
-    return _userFromFirebase(authResult.user);
-  }
-
-  Future<User> createUserWithEmailAndPassword(
-      String email, String password) async {
-    final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    return _userFromFirebase(authResult.user);
   }
 
 //  Future<User> signInWithFacebook() async {

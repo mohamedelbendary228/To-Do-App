@@ -38,60 +38,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
     });
   }
 
-  Future<void> _signOut(context) async {
-    try {
-      final auth = Provider.of<Auth>(context, listen: false);
-      await auth.signOut();
-    } catch (e) {}
-  }
-
-  Future<void> _confirmSignOut(BuildContext context) async {
-    final didRequestSignOut = await PlatformAlertDialog(
-      title: 'Logout',
-      content: 'Are you sure that you want to lougout?',
-      cancelActionText: 'Cancel',
-      defaultActionText: 'Logout',
-    ).show(context);
-    if (didRequestSignOut == true) {
-      _signOut(context);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title']),
-        actions: <Widget>[
-          if (_pages[_selectedPageIndex]['title'] == 'Welcome')
-            Row(
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () => EditJobPage.show(context),
-                ),
-                SizedBox(width: 10),
-                Consumer<AppThemeState>(
-                  builder: (context, themeState, child) => Switch(
-                    onChanged: (newValue) {
-                      themeState.toggleTheme();
-                    },
-                    value: themeState.isDark,
-                  ),
-                )
-              ],
-            ),
-          if (_pages[_selectedPageIndex]['title'] == 'Account')
-            FlatButton(
-              textColor: Colors.white,
-              child: Text(
-                'Logout',
-                style: TextStyle(fontSize: 20),
-              ),
-              onPressed: () => _confirmSignOut(context),
-            ),
-        ],
-      ),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectedPage,

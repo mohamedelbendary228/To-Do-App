@@ -12,7 +12,6 @@ String documentIdFromCurrentDate() => DateTime.now().toIso8601String();
 
 class Database {
   final String uid;
-
   Database({@required this.uid}) : assert(uid != null);
 
   Future<void> createAndEditJob(Job job) async {
