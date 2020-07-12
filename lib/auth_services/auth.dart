@@ -52,6 +52,7 @@ class Auth with ChangeNotifier{
       String email, String password) async {
     final authResult = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
+
     return _userFromFirebase(authResult.user);
   }
 

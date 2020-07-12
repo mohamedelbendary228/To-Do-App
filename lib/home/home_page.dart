@@ -2,6 +2,7 @@ import 'package:authmabform/crud_services/database.dart';
 import 'package:authmabform/crud_services/edit_job_screen.dart';
 import 'package:authmabform/crud_services/job_model.dart';
 import 'package:authmabform/home/empty_content.dart';
+import 'package:authmabform/sidebar_navigation/navigation_bloc.dart';
 import 'package:authmabform/them_service/app_theme_state.dart';
 import 'package:authmabform/widgest/platform_excption_alert_dailog.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:provider/provider.dart';
 
 import 'file:///C:/Users/moham/AndroidStudioProjects/auth_mab_form/lib/widgest/job_list_tile.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget with NavigationStates{
   Future<void> _delete(BuildContext context, Job job) async {
     try {
       final database = Provider.of<Database>(context, listen: false);
@@ -48,7 +49,10 @@ class HomePage extends StatelessWidget {
             ),
         ],
       ),
-      body: _buildBody(context),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: _buildBody(context),
+      ),
     );
   }
 

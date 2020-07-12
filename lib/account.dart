@@ -1,10 +1,12 @@
 import 'package:authmabform/auth_services/auth.dart';
+import 'package:authmabform/sidebar_navigation/navigation_bloc.dart';
 import 'package:authmabform/widgest/avatar.dart';
 import 'package:authmabform/widgest/platform_alert_dailog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Account extends StatelessWidget {
+class Account extends StatelessWidget with NavigationStates{
+
   Future<void> _signOut(context) async {
     try {
       final auth = Provider.of<Auth>(context, listen: false);

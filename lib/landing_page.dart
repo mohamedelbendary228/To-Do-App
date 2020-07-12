@@ -1,5 +1,7 @@
 import 'package:authmabform/auth_services/auth.dart';
 import 'package:authmabform/crud_services/database.dart';
+import 'package:authmabform/home/home_page.dart';
+import 'package:authmabform/sidebar_layout.dart';
 import 'package:authmabform/sign_in/sign_in_screen.dart';
 import 'package:authmabform/bottom_navigation.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class LandingPage extends StatelessWidget {
             value: user,
             child: Provider<Database>(
               create: (_) => Database(uid: user.uid),
-              child: BottomNavigation(),
+              child: SidebarLayout(),
             ),
           );
         } else {
